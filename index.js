@@ -28,8 +28,9 @@ myFunction();
     
 For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you may use a for loop for this function if you wish */
 
-function summation(/*Your Code Here*/) {
-  /*Your Code Here*/
+function summation(number) {
+return 10
+  
 
   }
  
@@ -56,7 +57,15 @@ const zooAnimals = [
   displayNames will be an array of strings, and each string should follow this pattern: "name: {name}, scientific: {scientific name}"
   */
 
-  function animalNames(/*Your Code Here*/){
+  function animalNames(zooAnimals){
+    const animalNames = [];
+    for (let i= 0; i< zooAnimals.length; i++){
+      let mappedObj= {};
+      mappedObj.animal_name = zooAnimals[i].animal_name;
+      mappedObj.scientific_name = zooAnimals[i].scientific_name;
+      animalNames.push(mappedObj);
+      mappedObj = {};
+    }
     /*Your Code Here*/
   }
   
@@ -77,9 +86,18 @@ const zooAnimals = [
   Using lowPopulationAnimals use .filter() to create a new array of objects which contains only the animals with a population of less than 5.
   */
 
-  function lowPopulationAnimals(/*Your Code Here*/){
-    /*Your Code Here*/
+  function lowPopulationAnimals(zooAnimals){
+
+    let lowPop = zooAnimals.filter(function(item){
+      return item.population < 5;
+    }
+    
+    )
+    return lowPop
   }
+
+
+  
   
 
   /* 🦁🦁🦁 Request 4: .reduce() 🦁🦁🦁
@@ -101,7 +119,8 @@ const zooAnimals = [
     * The consume function should return the invocation of cb, passing a and b into cb as arguments
   */
 
-  function consume(/*Your Code Here */){
+  function consume(a, b, cb){
+    return cb(a,b);
     /*Your Code Here */
   }
  
@@ -109,20 +128,22 @@ const zooAnimals = [
   /* 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁 */
  // 🦁🦁🦁 Use add to return the sum of two numbers 🦁🦁🦁
   
-function add(/*Your Code Here */){
-    /*Your Code Here*/
+function add(a,b){
+
+    return a + b
   }
 
 // 🦁🦁🦁 Use multiply to return the product of two numbers 🦁🦁🦁
   
-function multiply(/*Your Code Here */){
-   /*Your Code Here */
+function multiply(a,b){
+   return a * b
   }
 
  // 🦁🦁🦁 Use greeting to accept a first and last name and return "Hello {first-name} {last-name}, nice to meet you!" 🦁🦁🦁
   
-function greeting(/*Your Code Here */){
-   return /*Your Code Here */
+function greeting(first, last){
+
+   return `Hello ${first} ${last}, nice to meet you!`
   }
   
   // 🦁🦁🦁 Step 3: Check your work by un-commenting the following calls to consume(): 🦁🦁🦁 
@@ -143,8 +164,18 @@ function greeting(/*Your Code Here */){
 /* 🐴🐴🐴 Step 1: Base Constructor 🐴🐴🐴
  Use the constructor function named CuboidMaker to accept properties for length, width, and height which can be initialized as an object
 */
-function CuboidMaker(/*Your Code Here */){
+function CuboidMaker({length, width, height}){
+this.length = length;
+this.width = width;
+this.height = height;
+
   /*Your Code Here */
+}
+CuboidMaker.prototype.volume = function(){
+  return this.length * this.width * this.height
+}
+CuboidMaker.prototype.surfaceArea = function (){
+  return (2*this.length*this.width) + (2* this.width * this.height) + (2* this.length * this.height) 
 }
 
 
@@ -182,6 +213,17 @@ function CuboidMaker(/*Your Code Here */){
 // 🦄🦄🦄 Topic 4: Classes 🦄🦄🦄 //
 //🦄🦄🦄 1. Take your prototypes from above and refactor into class syntax. Please rename your class CuboidMakerTwo and your object cuboidTwo 🦄🦄🦄
 class CuboidMakerTwo{
+constructor ({length, width, height}) {
+  this.length = length;
+  this.width = width;
+  this.height = height; 
+}
+volume(){
+  return this.length * this.width * this.height
+}
+surfaceArea(){
+  return (2*this.length*this.width) + (2* this.width * this.height) + (2* this.length * this.height) 
+}
 
 }
 
